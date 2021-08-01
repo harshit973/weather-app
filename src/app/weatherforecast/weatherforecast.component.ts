@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { tileLayer, latLng } from 'leaflet';
-import * as L from "leaflet";
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { FormBuilder } from '@angular/forms';
+
+const L=require("leaflet");
+const map=require("leaflet-geosearch");
+
 
 @Component({
   selector: 'app-weatherforecast',
@@ -13,7 +14,7 @@ export class WeatherforecastComponent implements OnInit {
   map:any;
   options = {
     layers: [
-      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Harshit'
       }),
     ],
@@ -42,13 +43,13 @@ export class WeatherforecastComponent implements OnInit {
 
   ngOnInit(): void {  
     this.map = L.map('map',this.options)
-    this.marker=L.marker(latLng(29.809049599999994, 76.4116992),this.icon)
+    this.marker=L.marker(L.latLng(29.809049599999994, 76.4116992),this.icon)
     this.marker.on("mouseup",(pos:any)=>{this.getweather(pos.latlng)})
     this.map.addLayer(this.marker)
     this.map.on("click",(pos:any)=>{   
-        this.marker.setLatLng(latLng(pos.latlng.lat,pos.latlng.lng))
+        this.marker.setLatLng(L.latLng(pos.latlng.lat,pos.latlng.lng))
     })    
-    navigator.geolocation.getCurrentPosition((pos)=>{this.marker.setLatLng(latLng(pos.coords.latitude,pos.coords.longitude));this.map.setView( latLng(pos.coords.latitude,pos.coords.longitude) ) },(err)=>{this.map.setView( latLng(21.105, 436.992))})
+    navigator.geolocation.getCurrentPosition((pos)=>{this.marker.setLatLng(L.latLng(pos.coords.latitude,pos.coords.longitude));this.map.setView(L.latLng(pos.coords.latitude,pos.coords.longitude) ) },(err)=>{this.map.setView(L.latLng(21.105, 436.992))})
     this.getweather({lat: 29.809049599999994, lng: 76.4116992})
   }
   getweather(latlng:any){
@@ -75,8 +76,8 @@ export class WeatherforecastComponent implements OnInit {
   }  
   lsearch(){
     this.sresult=[]
-    const provider = new OpenStreetMapProvider();
-    const results = provider.search({ query: this.ldata.value.address }).then((res)=>{
+    const provider = new map.OpenStreetMapProvider();
+    const results = provider.search({ query: this.ldata.value.address }).then((res:any)=>{
       for(let i in res){
         this.sresult.push({"name":res[i].label,"x":res[i].y,"y":res[i].x})
       }
@@ -85,7 +86,7 @@ export class WeatherforecastComponent implements OnInit {
   setpin(x:any,y:any,name:string){
     this.address=name
     this.sresult=[]
-    this.marker.setLatLng(latLng(x,y))
+    this.marker.setLatLng(L.latLng(x,y))
     this.getweatherbycity(name)
   }
 }
