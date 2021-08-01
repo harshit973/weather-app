@@ -1,0 +1,116 @@
+form input{
+    width:100%;height:100%;border: none;box-sizing: border-box;outline: none;
+}
+form button{
+    border: none;background: none;position: absolute;top: 0px;right: 0;bottom: 0;display: flex;align-items: center;
+}
+form mat-icon{
+    font-size: 24px;
+}
+.nav{
+    width: 100%;height: 50px;box-shadow: 0 0 15px 0 black;margin-bottom: 5px;display: flex;align-items: center;position: relative;background-color: white;z-index: 8888;
+}
+.display-outer{
+    width: 100%;height: 93.8%;display: flex;flex-wrap: wrap-reverse;position: relative;z-index: 500;
+}
+.sresult p{
+    margin: 0;
+}
+@media only screen and (min-width:850px) {
+    form{
+        width: 40%;
+        margin: auto;
+        position: relative;
+        border-radius: .3em;
+        border: 1px solid #c3c3c3;
+        padding: 5px 25px 5px 10px;
+        height: 50%;
+    }
+
+    .display-outer .weather-outer{
+        width: 15%;
+        background: linear-gradient(to bottom, #2193b0, #6dd5ed);
+        color: white;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+    }
+    .display-outer #map{
+        width: 85%;
+        height: 100%;
+    }  
+    .sresult{
+        position: fixed;
+        top: 50px;
+        background-color: white;
+        width: 40%;
+        margin: auto;
+        left: 30%;
+        z-index: 777;
+        overflow: auto;
+        box-shadow: 0px 2px 4px -2px black;
+        max-height: 40%;
+    }      
+}
+@media only screen and (max-width:850px) {
+    form{
+        width: 70%;
+        margin: auto;
+        position: relative;
+        border-radius: .3em;
+        border: 1px solid #c3c3c3;
+        padding: 5px 25px 5px 10px;
+        height: 50%;
+    }
+    
+    .display-outer .weather-outer{
+        width: 100%;
+        background: linear-gradient(to bottom, #2193b0, #6dd5ed);
+        color: white;
+        display: flex;
+        align-items: center;
+        height: 250px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        z-index: 777;
+    }
+    .display-outer #map{
+        width: 100%;
+        height: 100%;
+    }        
+    .sresult{
+        position: fixed;
+        top: 50px;
+        background-color: white;
+        width: 100%;
+        margin: auto;
+        left: 0;
+        z-index: 777;
+        overflow: auto;
+        max-height: 100%;
+        box-shadow: 0px 2px 4px -2px black;
+    }      
+}
+
+.display-outer .weather-outer .head{
+    overflow: auto;padding: 10px;text-align: center;box-sizing: border-box;width: 100%;
+}
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
