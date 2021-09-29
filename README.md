@@ -1,6 +1,5 @@
 # Weather App
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+This app is created to get weather updates. You can check it out on https://weather-app-57d4f.web.app
 
 ## Development server
 
